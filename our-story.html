@@ -29,14 +29,11 @@
   .container {
     position: relative;
     z-index: 1;
-    max-width: 720px;
+    max-width: 900px;
     margin: 0 auto;
-    padding: 60px 20px 120px;
+    padding: 60px 20px 60px;
     text-align: center;
     flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
   }
   .logo {
     font-family: 'Playfair Display', serif;
@@ -44,33 +41,16 @@
     font-size: 48px;
     letter-spacing: 0.3em;
     color: #f5f5f7;
-    margin-bottom: 60px;
+    margin-bottom: 20px;
     user-select: none;
     text-decoration: none;
     display: inline-block;
-  }
-  h1 {
-    font-family: 'Playfair Display', serif;
-    font-weight: 700;
-    font-size: 2.8rem;
-    margin-bottom: 24px;
-    color: #fff;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    text-shadow: 0 0 8px #f5f5f7cc, 0 0 16px #f5f5f7aa;
-  }
-  p {
-    font-weight: 300;
-    font-size: 1.1rem;
-    color: #ccc;
-    line-height: 1.6;
-    margin-bottom: 60px;
   }
   nav {
     display: flex;
     justify-content: center;
     gap: 36px;
-    margin-bottom: 60px;
+    margin: 30px 0 50px;
   }
   nav a {
     font-weight: 300;
@@ -91,6 +71,52 @@
     box-shadow: 0 0 6px #f5f5f7bb, 0 0 12px #f5f5f7aa;
     outline: none;
   }
+  h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    color: #fff;
+  }
+  h1 {
+    font-size: 2.8rem;
+    margin-bottom: 24px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-shadow: 0 0 8px #f5f5f7cc, 0 0 16px #f5f5f7aa;
+  }
+  h2 {
+    margin-top: 50px;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+  h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+  }
+  p {
+    font-weight: 300;
+    font-size: 1.1rem;
+    color: #ccc;
+    line-height: 1.6;
+    margin-bottom: 40px;
+  }
+  .values {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+  }
+  .value-card {
+    background: rgba(255,255,255,0.05);
+    padding: 20px;
+    border-radius: 8px;
+  }
+  .quote-section {
+    margin-top: 50px;
+    font-style: italic;
+    font-size: 1.3rem;
+    color: #f5f5f7;
+    text-shadow: 0 0 6px #f5f5f7aa;
+  }
   footer {
     background: #1a1a1a;
     padding: 40px 20px;
@@ -105,13 +131,37 @@
 
 <div class="container" role="main">
   <a href="index.html" class="logo" aria-label="Back to Home">PARROT</a>
+
   <h1>Our Story</h1>
-  <p>Founded with a passion for elegance and simplicity, Parrot Luxury crafts fragrances that embody timeless sophistication. Each scent is inspired by the delicate balance between nature's purity and the artistry of perfumery.</p>
 
   <nav aria-label="Main navigation">
     <a href="collections.html" tabindex="0">Collections</a>
     <a href="contacts.html" tabindex="0">Contact</a>
   </nav>
+
+  <p>Founded with a passion for elegance and simplicity, Parrot Luxury crafts fragrances that embody timeless sophistication. Each scent is inspired by the delicate balance between nature's purity and the artistry of perfumery.</p>
+
+  <!-- Our Philosophy -->
+  <h2>Our Philosophy</h2>
+  <div class="values">
+    <div class="value-card">
+      <h3>Purity</h3>
+      <p>We select only the finest ingredients to ensure the highest quality.</p>
+    </div>
+    <div class="value-card">
+      <h3>Artistry</h3>
+      <p>Every fragrance is a masterpiece, crafted by expert perfumers.</p>
+    </div>
+    <div class="value-card">
+      <h3>Elegance</h3>
+      <p>Timeless sophistication is the heart of every creation we make.</p>
+    </div>
+  </div>
+
+  <!-- Quote -->
+  <div class="quote-section">
+    “Luxury is in each detail.”
+  </div>
 </div>
 
 <footer>
