@@ -1,211 +1,550 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Parrot Luxury - Signature Collection</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Parrot Luxury - Signature Collection</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
 
-<style>
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    background: url('gambar1.jpg') no-repeat center center / cover;
-    color: #ddd;
-    font-family: 'Montserrat', sans-serif;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-  }
-  body::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0,0,0,0.6);
-    z-index: 0;
-  }
-  .container {
-    position: relative;
-    z-index: 1;
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 60px 20px 120px;
-    text-align: center;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  .logo {
-    font-family: 'Playfair Display', serif;
-    font-weight: 700;
-    font-size: 48px;
-    letter-spacing: 0.3em;
-    color: #f5f5f7;
-    margin-bottom: 60px;
-    user-select: none;
-    text-decoration: none;
-    display: inline-block;
-  }
-  h1 {
-    font-family: 'Playfair Display', serif;
-    font-weight: 700;
-    font-size: 2.8rem;
-    margin-bottom: 24px;
-    color: #fff;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    text-shadow: 0 0 8px #f5f5f7cc, 0 0 16px #f5f5f7aa;
-  }
-  p.subtitle {
-    font-weight: 300;
-    font-size: 1.15rem;
-    color: #bbb;
-    margin-bottom: 60px;
-    letter-spacing: 0.1em;
-  }
-  nav {
-    display: flex;
-    justify-content: center;
-    gap: 36px;
-    margin-bottom: 100px;
-  }
-  nav a {
-    font-weight: 300;
-    font-size: 0.95rem;
-    color: #aaa;
-    text-decoration: none;
-    padding: 8px 16px;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    border-radius: 6px;
-    transition: all 0.3s ease;
-    user-select: none;
-  }
-  nav a:hover,
-  nav a:focus {
-    color: #f5f5f7;
-    background: #333;
-    box-shadow: 0 0 6px #f5f5f7bb, 0 0 12px #f5f5f7aa;
-    outline: none;
-  }
-  .btn-primary {
-    display: inline-block;
-    padding: 14px 48px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    font-size: 1.1rem;
-    color: #121212;
-    background: #f5f5f7;
-    border: none;
-    border-radius: 36px;
-    cursor: pointer;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    box-shadow: 0 8px 15px #f5f5f7bb;
-    transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
-    user-select: none;
-  }
-  .btn-primary:hover,
-  .btn-primary:focus {
-    background: #eaeaea;
-    box-shadow: 0 10px 25px #f5f5f7ee;
-    transform: translateY(-3px);
-    outline: none;
-  }
-  footer {
-    background: #1a1a1a;
-    padding: 40px 20px;
-    text-align: center;
-    color: #666;
-    font-size: 0.85rem;
-    letter-spacing: 0.05em;
-  }
+    <style>
+        /* Variabel Warna */
+        :root {
+            --color-dark: #0A0A0A;
+            --color-gold: #B89A7A; 
+            --color-light: #F5F5F7;
+            --color-text: #E5E5E5;
+        }
 
-  /* 📱 Responsive untuk tablet */
-  @media (max-width: 768px) {
-    .container {
-      padding: 40px 16px 80px;
-    }
-    .logo {
-      font-size: 36px;
-      letter-spacing: 0.2em;
-      margin-bottom: 40px;
-    }
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-    }
-    p.subtitle {
-      font-size: 1rem;
-      margin-bottom: 40px;
-    }
-    nav {
-      flex-wrap: wrap;
-      gap: 20px;
-      margin-bottom: 60px;
-    }
-    nav a {
-      font-size: 0.85rem;
-      padding: 6px 12px;
-    }
-    .btn-primary {
-      padding: 12px 36px;
-      font-size: 1rem;
-    }
-  }
+        /* RESET & BASE STYLES */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        /* FIX JUMP SCROLL: SCROLL BEHAVIOR DIKENDALIKAN HANYA OLEH JS */
+        /* html { scroll-behavior: smooth; } <--- DIHAPUS DARI SINI */
+        body {
+            background-color: var(--color-dark);
+            color: var(--color-text);
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            position: relative;
+        }
+        /* Kontainer Utama untuk Konten Non-Hero */
+        .content-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px 40px;
+            position: relative;
+        }
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--color-gold);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            text-align: center;
+        }
+        .section-subtitle {
+            font-weight: 300;
+            font-size: 1.1rem;
+            color: #999;
+            margin-bottom: 60px;
+            text-align: center;
+        }
 
-  /* 📱 Responsive untuk HP kecil */
-  @media (max-width: 480px) {
-    .container {
-      padding: 30px 12px 60px;
-    }
-    .logo {
-      font-size: 28px;
-      letter-spacing: 0.15em;
-    }
-    h1 {
-      font-size: 1.6rem;
-    }
-    p.subtitle {
-      font-size: 0.9rem;
-      letter-spacing: 0.05em;
-    }
-    nav {
-      gap: 12px;
-    }
-    nav a {
-      font-size: 0.8rem;
-      padding: 5px 10px;
-    }
-    .btn-primary {
-      padding: 10px 28px;
-      font-size: 0.9rem;
-    }
-  }
-</style>
+
+        /* --- HEADER/NAVIGATION (Glassmorphism Ringan) --- */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(184, 154, 122, 0.3);
+            padding: 15px 40px;
+        }
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 28px;
+            letter-spacing: 0.2em;
+            color: var(--color-light);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .logo:hover {
+            color: var(--color-gold);
+        }
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+        .nav-links a {
+            color: var(--color-text);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: var(--color-gold);
+        }
+
+
+        /* --- HERO SECTION --- */
+        #hero {
+            background-image: url('gambar1.jpg');
+            background-attachment: fixed;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+            padding: 0;
+        }
+        #hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            max-width: 800px;
+            text-align: center;
+            padding: 0 20px;
+        }
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 4.5rem;
+            color: var(--color-light);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+        }
+        .cta-btn {
+            display: inline-block;
+            padding: 16px 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--color-dark);
+            background: var(--color-gold);
+            border: none;
+            border-radius: 2px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+        }
+        .cta-btn:hover {
+            background: #D4B692;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+            transform: translateY(-2px);
+        }
+
+        /* --- KEY FEATURES SECTION --- */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        .feature-card {
+            padding: 25px;
+            border: 1px solid rgba(184, 154, 122, 0.1);
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .feature-card:hover {
+            background-color: #1A1A1A;
+            border-color: var(--color-gold);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        .feature-card h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--color-gold);
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+        .feature-card p {
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+
+        /* --- PRODUCT CATALOG SECTION --- */
+        .product-grid {
+            /* Mengubah minmax agar 3 produk pas di desktop, dan 2 di tablet */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            display: grid;
+            gap: 40px;
+            text-align: left;
+        }
+        .product-card {
+            background-color: #0F0F0F;
+            border: 1px solid rgba(184, 154, 122, 0.2);
+            padding: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .product-card .img-placeholder {
+            width: 100%;
+            height: 250px;
+            background: url('gambar2.jpg') no-repeat center center/cover;
+            margin-bottom: 20px;
+            display: block;
+            border: 1px solid rgba(184, 154, 122, 0.1);
+        }
+        .product-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--color-light);
+            margin-bottom: 5px;
+        }
+        .product-card .price {
+            color: var(--color-gold);
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .shop-link-card {
+            color: var(--color-gold);
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            transition: color 0.3s;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        .shop-link-card:hover {
+            color: var(--color-light);
+        }
+
+        /* --- OUR STORY SECTION --- */
+        #story {
+            padding-top: 100px;
+            padding-bottom: 100px;
+        }
+        .story-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            text-align: left;
+        }
+        .story-text {
+            flex: 1;
+        }
+        .story-text p {
+            margin-bottom: 20px;
+            font-weight: 300;
+            color: #ccc;
+        }
+        .story-image {
+            flex: 1;
+            min-height: 350px;
+            background: url('gambar2.jpg') no-repeat center center/cover;
+            border: 3px solid var(--color-gold);
+            border-radius: 5px;
+            opacity: 0.9;
+            transition: opacity 0.5s;
+        }
+
+
+        /* --- CONTACT SECTION --- */
+        .contact-content {
+            text-align: center;
+        }
+        .contact-content p {
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+        }
+        .contact-link {
+            color: var(--color-gold);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.5rem;
+            display: block;
+            margin-top: 15px;
+            transition: color 0.3s;
+        }
+        .contact-link:hover {
+            color: var(--color-light);
+        }
+
+
+        /* --- FOOTER --- */
+        footer {
+            background: rgba(0, 0, 0, 0.5);
+            border-top: 1px solid rgba(184, 154, 122, 0.2);
+            padding: 30px 20px;
+            text-align: center;
+            color: #666;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+        }
+        
+        /* --- ANIMATION STYLES (Fade-in Up) --- */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 📱 RESPONSIVE */
+        @media (max-width: 1024px) {
+            h1 { font-size: 3.5rem; }
+            .content-container { padding: 80px 20px; }
+            .section-title { font-size: 2.5rem; }
+            .story-content { flex-direction: column; }
+            .story-image { width: 100%; min-height: 250px; }
+            /* Mengubah grid agar 2 produk per baris di tablet */
+            .product-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+        }
+
+        @media (max-width: 768px) {
+            .header { padding: 15px 15px; }
+            h1 { font-size: 2.8rem; letter-spacing: 0.08em; }
+            .subtitle { font-size: 1rem; margin-bottom: 40px; }
+            .nav-content { flex-direction: column; gap: 10px; }
+            .nav-links { margin-top: 10px; }
+            .nav-links a { font-size: 13px; }
+            .cta-btn { padding: 12px 36px; font-size: 0.9rem; letter-spacing: 0.15em; }
+            .product-grid { gap: 30px; }
+            .story-content { gap: 30px; }
+            .contact-link { font-size: 1.2rem; }
+        }
+
+        @media (max-width: 480px) {
+            .logo { font-size: 24px; }
+            h1 { font-size: 2rem; }
+            .section-title { font-size: 2rem; }
+            .product-card .img-placeholder { height: 200px; }
+            /* Mengubah grid agar 1 produk per baris di HP */
+            .product-grid { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
 
-<div class="container" role="main">
-  <a href="index.html" class="logo" aria-label="Parrot Luxury Brand Logo">PARROT</a>
-  <h1>Signature Collection</h1>
-  <p class="subtitle">Exquisite scents inspired by elegance and simplicity</p>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const headerHeight = document.querySelector('.header').offsetHeight;
 
-  <nav aria-label="Main navigation">
-    <a href="our-story.html" tabindex="0">Our Story</a>
-    <a href="collections.html" tabindex="0">Collections</a>
-    <a href="contacts.html" tabindex="0">Contact</a>
-  </nav>
+            // FIX: Mengambil semua link navigasi untuk Smooth Scroll dengan Offset Header
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    if (this.getAttribute('href').length > 1) {
+                        e.preventDefault();
+                        const targetId = this.getAttribute('href');
+                        const targetElement = document.querySelector(targetId);
 
-  <button class="btn-primary" aria-label="Shop now">Shop Now</button>
-</div>
+                        if (targetElement) {
+                            // Menggunakan JS untuk smooth scroll dengan offset header
+                            const targetPosition = targetElement.offsetTop - headerHeight + 5;
+                            window.scrollTo({
+                                top: targetPosition,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
 
-<footer>
-  &copy; 2025 Parrot Luxury. All rights reserved.
-</footer>
+            // Animasi Scroll Reveal
+            const elements = document.querySelectorAll('.fade-in-up');
+
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const delay = entry.target.getAttribute('data-delay') || '0s';
+                        entry.target.style.transitionDelay = delay;
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                rootMargin: '0px',
+                threshold: 0.15
+            });
+
+            elements.forEach((element) => {
+                // Tentukan delay per item pada grid untuk efek stagger
+                const parentGrid = element.closest('.product-grid');
+                const parentFeatures = element.closest('.features-grid');
+
+                if (parentGrid || parentFeatures) {
+                    const index = Array.from(element.parentNode.children).indexOf(element);
+                    element.setAttribute('data-delay', `${index * 0.15}s`);
+                }
+                observer.observe(element);
+            });
+            
+            // FIX: Memastikan konten Hero (yang punya fade-in-up) langsung terlihat saat load
+            document.querySelectorAll('#hero .fade-in-up').forEach(el => {
+                el.classList.add('visible');
+            });
+        });
+    </script>
+    
+    <header class="header">
+        <div class="nav-content">
+            <a href="#hero" class="logo">PARROT</a>
+            <nav class="nav-links">
+                <a href="#catalog">Collections</a>
+                <a href="#story">Our Story</a>
+                <a href="#features">Why Us</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="hero-content">
+                <h1 class="fade-in-up" data-delay="0.1s">Signature Collection</h1>
+                <p class="subtitle fade-in-up" data-delay="0.3s" style="font-weight: 400; font-size: 1.25rem; color: #ddd; margin-bottom: 50px;">Exquisite scents inspired by elegance and simplicity</p>
+                <a href="#catalog" class="cta-btn fade-in-up" data-delay="0.5s">Shop Now</a>
+            </div>
+        </section>
+
+        <section id="features" class="content-container">
+            <h2 class="section-title fade-in-up">The Parrot Promise</h2>
+            <p class="section-subtitle fade-in-up">What makes our fragrances an essential element of your luxury lifestyle.</p>
+
+            <div class="features-grid">
+                
+                <div class="feature-card fade-in-up">
+                    <h3>Rare Ingredients</h3>
+                    <p>Sourced from sustainable global partners, ensuring unparalleled quality and exclusivity.</p>
+                </div>
+
+                <div class="feature-card fade-in-up">
+                    <h3>Timeless Artistry</h3>
+                    <p>Composed by master European perfumers with decades of experience in haute parfumerie.</p>
+                </div>
+
+                <div class="feature-card fade-in-up">
+                    <h3>Longevity</h3>
+                    <p>Highly concentrated Eau de Parfum ensuring a captivating and lasting presence all day long.</p>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="catalog" class="content-container">
+            <h2 class="section-title fade-in-up">Collections</h2>
+            <p class="section-subtitle fade-in-up">A curated selection for the discerning individual.</p>
+
+            <div class="product-grid">
+                
+                <div class="product-card fade-in-up">
+                    <span class="img-placeholder"></span>
+                    <h3>Midnight Dusk</h3>
+                    <span class="price">IDR 1.250.000</span>
+                    <p>A bold and rich aroma of sandalwood, black cardamom, and ancient amber. Perfect for evening wear. Concentration: Extrait de Parfum.</p>
+                    <a href="#" class="shop-link-card">Discover &rarr;</a>
+                </div>
+
+                <div class="product-card fade-in-up">
+                    <span class="img-placeholder"></span>
+                    <h3>Sunlight Bloom</h3>
+                    <span class="price">IDR 980.000</span>
+                    <p>Bright notes of bergamot, fresh jasmine, and sea salt. Capturing the fresh essence of a spring morning. Concentration: Eau de Parfum.</p>
+                    <a href="#" class="shop-link-card">Discover &rarr;</a>
+                </div>
+
+                <div class="product-card fade-in-up">
+                    <span class="img-placeholder"></span>
+                    <h3>Velvet Rain</h3>
+                    <span class="price">IDR 1.100.000</span
+                    ><p>Subtle fusion of rare vanilla, white musk, and soft patchouli. Smooth, sophisticated, and perfectly unisex. Concentration: Eau de Parfum.</p>
+                    <a href="#" class="shop-link-card">Discover &rarr;</a>
+                </div>
+
+                <div class="product-card fade-in-up">
+                    <span class="img-placeholder"></span>
+                    <h3>Crimson Leather</h3>
+                    <span class="price">IDR 1.550.000</span
+                    ><p>Intense blend of Tuscan leather, raspberry, and saffron. A powerful scent for those who command attention. Concentration: Extrait de Parfum.</p>
+                    <a href="#" class="shop-link-card">Discover &rarr;</a>
+                </div>
+
+                <div class="product-card fade-in-up">
+                    <span class="img-placeholder"></span>
+                    <h3>Ocean Echo</h3>
+                    <span class="price">IDR 850.000</span
+                    ><p>A refreshing marine scent with notes of citrus, green tea, and driftwood. Clean and energetic. Concentration: Eau de Toilette.</p>
+                    <a href="#" class="shop-link-card">Discover &rarr;</a>
+                </div>
+                
+                <div class="product-card fade-in-up">
+                    <span class="img-placeholder"></span>
+                    <h3>Golden Fig</h3>
+                    <span class="price">IDR 1.050.000</span
+                    ><p>Warm and earthy notes of ripe fig, coconut milk, and blonde wood. Ideal for a cozy, daytime feel. Concentration: Eau de Parfum.</p>
+                    <a href="#" class="shop-link-card">Discover &rarr;</a>
+                </div>
+                
+            </div>
+        </section>
+        
+        <section id="story" class="content-container">
+            <h2 class="section-title fade-in-up">Our Story</h2>
+            <p class="section-subtitle fade-in-up">The pursuit of perfection in every drop.</p>
+
+            <div class="story-content">
+                <div class="story-image fade-in-up"></div>
+                <div class="story-text">
+                    <p class="fade-in-up">Parrot Luxury was founded on the principle that fragrance is an intimate extension of the wearer. We reject the fleeting trends of mass production, choosing instead to focus on **timeless compositions** and **uncompromising quality**.</p>
+                    <p class="fade-in-up">It began in Paris, 1985, with a singular vision: to distill the world's most evocative memories into enduring scents. Our founder, **Eleanor Dubois**, believed true elegance whispers, it does not shout.</p>
+                    <p class="fade-in-up">We are committed to transparency. Our master perfumers travel the globe to source the rarest botanicals—from hand-picked Moroccan rose to sustainably harvested Indian sandalwood. Every ingredient is ethically sourced and meticulously verified.</p>
+                    <p class="fade-in-up">Each collection is a quiet testament to the artistry and patience required to create true luxury. Our process is slow, deliberate, and personal. We age our concentrates for months to achieve perfect depth and complexity.</p>
+                    <p class="fade-in-up" style="font-style: italic; color: var(--color-gold); font-weight: 600;">"A fragrance should tell a story. Parrot ensures yours is unforgettable."</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="contact" class="content-container" style="padding-bottom: 120px;">
+            <h2 class="section-title fade-in-up">Contact</h2>
+            <p class="section-subtitle fade-in-up">Connect with our luxury consultant.</p>
+
+            <div class="contact-content">
+                <p class="fade-in-up">For wholesale inquiries, private consultations, or press requests, please reach out directly.</p>
+                <a href="mailto:consultant@parrotluxury.com" class="contact-link fade-in-up" data-delay="0.1s">consultant@parrotluxury.com</a>
+                <a href="tel:+628123456789" class="contact-link fade-in-up" data-delay="0.2s">+62 812-3456-789</a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        &copy; 2025 Parrot Luxury. All rights reserved.
+    </footer>
 
 </body>
 </html>
